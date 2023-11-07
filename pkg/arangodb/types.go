@@ -2,19 +2,10 @@ package arangodb
 
 import (
 	"github.com/sbezverk/gobmp/pkg/base"
+	"github.com/sbezverk/gobmp/pkg/bgpls"
 	"github.com/sbezverk/gobmp/pkg/sr"
 	"github.com/sbezverk/gobmp/pkg/srv6"
 )
-
-type duplicateNode struct {
-	Key         string       `json:"_key,omitempty"`
-	DomainID    int64        `json:"domain_id"`
-	IGPRouterID string       `json:"igp_router_id,omitempty"`
-	AreaID      string       `json:"area_id"`
-	Protocol    string       `json:"protocol,omitempty"`
-	ProtocolID  base.ProtoID `json:"protocol_id,omitempty"`
-	Name        string       `json:"name,omitempty"`
-}
 
 type lsTopologyObject struct {
 	Key                   string                `json:"_key"`
@@ -45,4 +36,8 @@ type lsTopologyObject struct {
 	UnidirResidualBW      uint32                `json:"unidir_residual_bw,omitempty"`
 	UnidirAvailableBW     uint32                `json:"unidir_available_bw,omitempty"`
 	UnidirBWUtilization   uint32                `json:"unidir_bw_utilization,omitempty"`
+	Prefix                string                `json:"prefix"`
+	PrefixLen             int32                 `json:"prefix_len"`
+	PrefixMetric          uint32                `json:"prefix_metric"`
+	PrefixAttrTLVs        *bgpls.PrefixAttrTLVs `json:"prefix_attr_tlvs"`
 }

@@ -1,5 +1,0 @@
-FROM scratch
-
-COPY ./bin/ipv6-linkstate-edge /ipv6-linkstate-edge
-ENTRYPOINT ["/ipv6-linkstate-edge"]
-

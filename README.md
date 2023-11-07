@@ -1,1 +1,1 @@
-# ipv6-linkstate-edge
+# linkstate-edge-v6
