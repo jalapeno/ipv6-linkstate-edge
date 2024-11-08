@@ -41,17 +41,17 @@ var (
 
 func init() {
 	runtime.GOMAXPROCS(1)
-	// flag.StringVar(&msgSrvAddr, "message-server", "198.18.133.103:30092", "URL to the messages supplying server")
-	// flag.StringVar(&dbSrvAddr, "database-server", "http://198.18.133.103:30852", "{dns name}:port or X.X.X.X:port of the graph database")
-	// flag.StringVar(&dbName, "database-name", "jalapeno", "DB name")
-	// flag.StringVar(&dbUser, "database-user", "root", "DB User name")
-	// flag.StringVar(&dbPass, "database-pass", "jalapeno", "DB User's password")
+	flag.StringVar(&msgSrvAddr, "message-server", "198.18.202.100:30092", "URL to the messages supplying server")
+	flag.StringVar(&dbSrvAddr, "database-server", "http://198.18.202.100:30852", "{dns name}:port or X.X.X.X:port of the graph database")
+	flag.StringVar(&dbName, "database-name", "jalapeno", "DB name")
+	flag.StringVar(&dbUser, "database-user", "root", "DB User name")
+	flag.StringVar(&dbPass, "database-pass", "jalapeno", "DB User's password")
 
-	flag.StringVar(&msgSrvAddr, "message-server", "", "URL to the messages supplying server")
-	flag.StringVar(&dbSrvAddr, "database-server", "", "{dns name}:port or X.X.X.X:port of the graph database")
-	flag.StringVar(&dbName, "database-name", "", "DB name")
-	flag.StringVar(&dbUser, "database-user", "", "DB User name")
-	flag.StringVar(&dbPass, "database-pass", "", "DB User's password")
+	// flag.StringVar(&msgSrvAddr, "message-server", "", "URL to the messages supplying server")
+	// flag.StringVar(&dbSrvAddr, "database-server", "", "{dns name}:port or X.X.X.X:port of the graph database")
+	// flag.StringVar(&dbName, "database-name", "", "DB name")
+	// flag.StringVar(&dbUser, "database-user", "", "DB User name")
+	// flag.StringVar(&dbPass, "database-pass", "", "DB User's password")
 
 	flag.StringVar(&lslinkCollection, "edge-name", "ls_link", "Edge Collection name, default \"ls_link\"")
 	flag.StringVar(&lsprefixCollection, "prefix-name", "ls_prefix", "Prefix Collection name, default \"ls_prefix\"")

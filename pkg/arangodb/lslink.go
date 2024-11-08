@@ -67,7 +67,7 @@ func (a *arangoDB) processLSLinkEdge(ctx context.Context, key string, l *message
 	if l.MTID == nil {
 		return nil
 	}
-	glog.Infof("processEdge processing lslink: %s", l.ID)
+	//glog.Infof("processEdge processing lslink: %s", l.ID)
 	// get local node from ls_link entry
 	ln, err := a.getNode(ctx, l, true)
 	if err != nil {

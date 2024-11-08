@@ -72,7 +72,21 @@ func NewDBSrvClient(arangoSrv, user, pass, dbname, lslink string, lsprefix strin
 		}
 		glog.Infof("ls_node_extended collection found %s, proceed to processing data", c)
 	}
-
+	// delete existing ls topology graph
+	found, err = arango.db.GraphExists(context.TODO(), lstopo)
+	if err != nil {
+		return nil, err
+	}
+	if found {
+		g, err := arango.db.Graph(context.TODO(), lstopo)
+		if err != nil {
+			return nil, err
+		}
+		if err := g.Remove(context.TODO()); err != nil {
+			return nil, err
+		}
+		glog.Infof("removed existing graph %s", lstopo)
+	}
 	// check for ls topology graph
 	found, err = arango.db.GraphExists(context.TODO(), lstopo)
 	if err != nil {
@@ -162,7 +176,7 @@ func (a *arangoDB) loadEdge() error {
 	for {
 		var p message.LSLink
 		meta, err := cursor.ReadDocument(ctx, &p)
-		//glog.Infof("processing lslink document: %+v", p)
+		glog.Infof("processing lslink document: %+v", p.Key)
 		if driver.IsNoMoreDocuments(err) {
 			break
 		} else if err != nil {
